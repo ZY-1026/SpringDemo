@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byName">
+
+
+
+    <bean id="oneInterface" class="com.spring.ioc.interfaces.OneInterfaceImpl"></bean>
+
+    <!---->
+    <!--<bean id="injectionService" class="com.spring.ioc.injection.service.InjectionServiceImpl">-->
+        <!--name的名称必须和类中属性名称一致-->
+        <!--<property name="injectionDAO" ref="injectionDAO"></property>-->
+    <!--</bean>-->
+
+    <bean id="injectionService" class="com.spring.ioc.injection.service.InjectionServiceImpl">
+        <!--name中的名次必须和构造器中的构造函数的参数一致-->
+        <constructor-arg name="injectionDAO" ref="injectionDAO"></constructor-arg>
+    </bean>
+
+    <bean id="injectionDAO" class="com.spring.ioc.injection.dao.InjectionDAOImpl"></bean>
+
+    <!--<bean id="beanScope" class="com.spring.bean.BeanScope" scope="singleton"></bean>-->
+
+    <bean id="beanScope" class="com.spring.bean.BeanScope" scope="prototype"></bean>
+
+    <!--<bean id="beanLifeCycle" class="com.spring.lifecycle.BeanLifeCycle" -->
+                <!--init-method="start" destroy-method="stop"></bean>-->
+
+    <bean id="beanLifeCycle" class="com.spring.lifecycle.BeanLifeCycle"></bean>
+
+    <bean id="MoocApplicationContext" class="com.spring.aware.MoocApplicationContext"></bean>
+    <bean id="MoocBeanName" class="com.spring.aware.MoocBeanName"></bean>
+
+
+    <bean id="AutoWiringDAO" class="com.spring.autowiring.AutoWiringDAO"></bean>
+    <bean id="AutoWiringService" class="com.spring.autowiring.AutoWiringService"></bean>
+
+</beans>
